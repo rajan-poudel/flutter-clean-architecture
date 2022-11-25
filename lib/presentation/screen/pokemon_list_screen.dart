@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../core/utility.dart';
 import '../Controller/pokemon.controller.dart';
@@ -69,7 +70,34 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
         future: _fetchData,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return snapshot.connectionState == ConnectionState.waiting
-              ? const Center(child: CircularProgressIndicator())
+              // ? const Center(child: CircularProgressIndicator())
+              ? Opacity(
+                  opacity: 0.5,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.black12,
+                    highlightColor: Colors.white,
+                    child: Container(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10),
+                            itemCount: 10,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Card(
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const Padding(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 10.0),
+                                ),
+                              );
+                            })),
+                  ),
+                )
               : snapshot.hasError
                   ? const Center(child: Text('Sorry data could not be loaded'))
                   : Consumer<PokemonProvider>(

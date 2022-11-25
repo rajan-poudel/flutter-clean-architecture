@@ -28,32 +28,32 @@ class PokemonEntity extends Equatable {
   final String? evolveLevel;
   final bool isFavourite = false;
 
-  const PokemonEntity({
-       this.id,
-       this.name,
-       this.description,
-       this.category,
-       this.imageUrl,
-       this.height,
-       this.weight,
-       this.hp,
-       this.attack,
-       this.defense,
-       this.specialAttack,
-       this.specialDefense,
-       this.speed,
-       this.total,
-       this.malePercentage,
-       this.femalePercentage,
-       this.eggGroups,
-       this.evolvedFrom,
-       this.cycles,
-       this.baseExp,
-       this.weaknesses,
-       this.evolutions,
-       this.types,
-       this.abilities,
-       this.evolveLevel});
+  const PokemonEntity(
+      {this.id,
+      this.name,
+      this.description,
+      this.category,
+      this.imageUrl,
+      this.height,
+      this.weight,
+      this.hp,
+      this.attack,
+      this.defense,
+      this.specialAttack,
+      this.specialDefense,
+      this.speed,
+      this.total,
+      this.malePercentage,
+      this.femalePercentage,
+      this.eggGroups,
+      this.evolvedFrom,
+      this.cycles,
+      this.baseExp,
+      this.weaknesses,
+      this.evolutions,
+      this.types,
+      this.abilities,
+      this.evolveLevel});
 
   @override
   List<Object?> get props {

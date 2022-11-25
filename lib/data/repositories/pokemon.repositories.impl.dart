@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:pokdex/core/errror/exception.dart';
 import 'package:pokdex/core/network/network.info.dart';
@@ -32,7 +31,6 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
         List<PokemonModel> pokemonList = List<PokemonModel>.from(
             responseList.map((pokemon) => PokemonModel.fromJson(pokemon)));
-        log(pokemonList.toString());
         return Right(pokemonList);
       } on ServerException {
         return const Left(AppError("Some things want error"));

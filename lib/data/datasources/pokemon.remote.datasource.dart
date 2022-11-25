@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:http/http.dart' as http;
 import 'package:pokdex/core/api.constants.dart';
 import 'package:pokdex/core/errror/exception.dart';
@@ -15,7 +13,6 @@ class PokemonRemoteDatasourceImpl implements PokemonRemoteDatasource {
   Future<String> getPokemonList() async {
     try {
       final response = await httpClient.get(Uri.parse(ApiConstant.BASE_URL));
-      log(response.body);
       return response.body;
     } catch (error) {
       throw ServerException();
