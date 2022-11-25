@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../core/utility.dart';
 import '../Controller/pokemon.controller.dart';
 import '../widget/pokemon_list_item.dart';
+import '../widget/pokemon_search.dart';
 
 class PokemonListScreen extends StatefulWidget {
   const PokemonListScreen({Key? key}) : super(key: key);
@@ -54,14 +55,14 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
                 size: 30,
               ),
               onPressed: () {
-                // showSearch(context: context, delegate: PokemonSearchDelegate());
+                showSearch(context: context, delegate: PokemonSearch());
               }),
-          IconButton(
-              icon: const Icon(Icons.favorite_border, size: 30),
-              onPressed: () {
-                // Navigator.of(context).push(
-                //     MaterialPageRoute(builder: (ctx) => FavouriteScreen()));
-              })
+          // IconButton(
+          //     icon: const Icon(Icons.favorite_border, size: 30),
+          //     onPressed: () {
+          //       // Navigator.of(context).push(
+          //       //     MaterialPageRoute(builder: (ctx) => FavouriteScreen()));
+          //     })
         ],
       ),
       body: FutureBuilder(
@@ -87,7 +88,7 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
                                     crossAxisCount: 2,
                                     mainAxisSpacing: 10,
                                     crossAxisSpacing: 10),
-                            itemCount: 50,
+                            itemCount: data.pokemonList.length,
                             itemBuilder: (ctx, index) {
                               final pokemon = data.pokemonList[index];
                               // return Text(pokemon.name.toString());

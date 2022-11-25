@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pokdex/domain/entities/pokemon_entity.dart';
 
@@ -82,15 +83,13 @@ class PokemonListItem extends StatelessWidget {
                       flex: 3,
                       child: Hero(
                         tag: 'pokemon${pokemon.id}',
-                        child: Image.network(
-                          pokemon.imageUrl.toString(),
+                        child: CachedNetworkImage(
                           height: 100,
-                          errorBuilder: (src, _, __) {
-                            return Image.asset(
-                              'assets/images/pokeball.png',
-                              height: 70,
-                            );
-                          },
+                          imageUrl: pokemon.imageUrl.toString(),
+                          errorWidget: (context, url, error) => Image.asset(
+                            'assets/images/pokeball.png',
+                            height: 70,
+                          ),
                         ),
                       ),
                     )

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -100,15 +101,13 @@ class PokemonDetailScreen extends StatelessWidget {
             ),
             Hero(
               tag: 'pokemon${selectedPokemon.id}',
-              child: Image.network(
-                selectedPokemon.imageUrl.toString(),
-                height: 200,
-                errorBuilder: (src, _, __) {
-                  return Image.asset(
-                    'assets/images/pokeball.png',
-                    height: 200,
-                  );
-                },
+              child: CachedNetworkImage(
+                height: 250,
+                imageUrl: selectedPokemon.imageUrl.toString(),
+                errorWidget: (context, url, error) => Image.asset(
+                  'assets/images/pokeball.png',
+                  height: 200,
+                ),
               ),
             ),
             Container(

@@ -22,4 +22,11 @@ class PokemonProvider with ChangeNotifier {
   PokemonEntity getPokemonById(String id) {
     return _pokemonList.firstWhere((pokemon) => pokemon.id == id);
   }
+
+  List<PokemonEntity> getSearchResults(String query) {
+    return _pokemonList
+        .where((pokemon) =>
+            pokemon.name!.toLowerCase().startsWith(query.toLowerCase()))
+        .toList();
+  }
 }
