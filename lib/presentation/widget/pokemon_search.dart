@@ -53,10 +53,13 @@ class PokemonSearch extends SearchDelegate {
                         final pokemon = searchResults[index];
                         return ListTile(
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
                                 builder: (ctx) => PokemonDetailScreen(
-                                      id: pokemon.id.toString(),
-                                    )));
+                                  id: pokemon.id.toString(),
+                                ),
+                              ),
+                            );
                           },
                           leading: Image.network(
                             pokemon.imageUrl.toString(),

@@ -91,7 +91,6 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
                             itemCount: data.pokemonList.length,
                             itemBuilder: (ctx, index) {
                               final pokemon = data.pokemonList[index];
-                              // return Text(pokemon.name.toString());
                               return PokemonListItem(
                                 pokemon: pokemon,
                               );
