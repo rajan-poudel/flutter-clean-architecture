@@ -20,10 +20,10 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
 
   Future<void> _getPokemonData() async {
     try {
-      await Provider.of<PokemonProvider>(context, listen: false)
+      await Provider.of<PokemonProvider>(context, listen: true)
           .getPokemonData();
     } catch (error) {
-      print(error);
+      print("Error is$error");
     }
   }
 
