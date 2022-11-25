@@ -14,7 +14,7 @@ const CACHED_DATA = "CHACHED_POKEMON";
 
 class PokemonLocalDatasourceimpl implements PokemonLocalDatasource {
   final SharedPreferences sharedPreferences;
-  PokemonLocalDatasourceimpl(this.sharedPreferences);
+  PokemonLocalDatasourceimpl({required this.sharedPreferences});
   @override
   Future<List<PokemonModel>> getPokemonList() {
     final jsonString = sharedPreferences.getString(CACHED_DATA);

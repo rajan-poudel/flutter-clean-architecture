@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:pokdex/core/errror/exception.dart';
 import 'package:pokdex/core/network/network.info.dart';
@@ -9,21 +10,30 @@ import 'package:pokdex/core/errror/app_error.dart';
 import 'package:dartz/dartz.dart';
 import 'package:pokdex/domain/repositories/pokemon_repositories.dart';
 
+import '../models/pokemon.model.dart';
+
 class PokemonRepositoryImpl implements PokemonRepository {
   PokemonRemoteDatasource pokemonRemoteDatasource;
   PokemonLocalDatasource pokemonLocalDatasource;
   NetworkInfo networkInfo;
 
-  PokemonRepositoryImpl(this.pokemonRemoteDatasource, this.networkInfo,
-      this.pokemonLocalDatasource);
+  PokemonRepositoryImpl(
+      {required this.pokemonRemoteDatasource,
+      required this.networkInfo,
+      required this.pokemonLocalDatasource});
   @override
   Future<Either<AppError, List<PokemonEntity>>> getPokemonList() async {
-    if (await networkInfo.isConnected) {
+    if (networkInfo.isConnected) {
       try {
         final remotePokemonlist =
             await pokemonRemoteDatasource.getPokemonList();
-        pokemonLocalDatasource.setPokemonList(json.encode(remotePokemonlist));
-        return Right(remotePokemonlist);
+        pokemonLocalDatasource.setPokemonList(remotePokemonlist);
+        List<dynamic> responseList = jsonDecode(remotePokemonlist);
+
+        List<PokemonModel> pokemonList = List<PokemonModel>.from(
+            responseList.map((pokemon) => PokemonModel.fromJson(pokemon)));
+        log(pokemonList.toString());
+        return Right(pokemonList);
       } on ServerException {
         return const Left(AppError("Some things want error"));
       }

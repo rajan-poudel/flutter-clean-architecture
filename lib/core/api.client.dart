@@ -6,12 +6,12 @@ import 'package:pokdex/core/errror/exception.dart';
 import 'api.constants.dart';
 
 class ApiClient {
-  final http.Client _client;
+  final http.Client client;
 
-  ApiClient(this._client);
+  ApiClient({required this.client});
 
   dynamic get(String path) async {
-    final response = await _client.get(
+    final response = await client.get(
       Uri.parse(ApiConstant.BASE_URL),
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +20,7 @@ class ApiClient {
 
     try {
       if (response.statusCode == 200) {
-        return response.body;
+        return json.decode(response.body);
       } else {
         return response.reasonPhrase;
       }

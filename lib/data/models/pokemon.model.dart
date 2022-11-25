@@ -2,84 +2,84 @@ import 'package:pokdex/domain/entities/pokemon_entity.dart';
 
 class PokemonModel extends PokemonEntity {
   @override
-  String id;
+  String? id;
   @override
-  String name;
+  String? name;
   @override
-  String description;
+  String? description;
   @override
-  String category;
+  String? category;
   @override
-  String imageUrl;
+  String? imageUrl;
   @override
-  String height;
+  String? height;
   @override
-  String weight;
+  String? weight;
   @override
-  int hp;
+  int? hp;
   @override
-  int attack;
+  int? attack;
   @override
-  int defense;
+  int? defense;
   @override
-  int specialAttack;
+  int? specialAttack;
   @override
-  int specialDefense;
+  int? specialDefense;
   @override
-  int speed;
+  int? speed;
   @override
-  int total;
+  int? total;
   @override
-  String malePercentage;
+  String? malePercentage;
   @override
-  String femalePercentage;
+  String? femalePercentage;
   @override
-  String eggGroups;
+  String? eggGroups;
   @override
-  String evolvedFrom;
+  String? evolvedFrom;
   @override
-  String cycles;
+  String? cycles;
   @override
-  String baseExp;
+  String? baseExp;
   @override
-  List<String> weaknesses;
+  List<String>? weaknesses;
   @override
-  List<String> evolutions;
+  List<String>? evolutions;
   @override
-  List<String> types;
+  List<String>? types;
   @override
-  List<String> abilities;
+  List<String>? abilities;
   @override
-  String evolveLevel;
+  String? evolveLevel;
   @override
   bool isFavourite = false;
 
   PokemonModel({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.category,
-    required this.imageUrl,
-    required this.height,
-    required this.weight,
-    required this.hp,
-    required this.attack,
-    required this.defense,
-    required this.specialAttack,
-    required this.specialDefense,
-    required this.speed,
-    required this.total,
-    required this.malePercentage,
-    required this.femalePercentage,
-    required this.eggGroups,
-    required this.evolvedFrom,
-    required this.cycles,
-    required this.baseExp,
-    required this.weaknesses,
-    required this.evolutions,
-    required this.types,
-    required this.abilities,
-    required this.evolveLevel,
+    this.id,
+    this.name,
+    this.description,
+    this.category,
+    this.imageUrl,
+    this.height,
+    this.weight,
+    this.hp,
+    this.attack,
+    this.defense,
+    this.specialAttack,
+    this.specialDefense,
+    this.speed,
+    this.total,
+    this.malePercentage,
+    this.femalePercentage,
+    this.eggGroups,
+    this.evolvedFrom,
+    this.cycles,
+    this.baseExp,
+    this.weaknesses,
+    this.evolutions,
+    this.types,
+    this.abilities,
+    this.evolveLevel,
     this.isFavourite = false,
   }) : super(
           id: id,
@@ -125,13 +125,13 @@ class PokemonModel extends PokemonEntity {
         baseExp: json['base_exp'],
         malePercentage: json['male_percentage'],
         femalePercentage: json['female_percentage'],
-        evolutions: json['evolutions'],
+        evolutions: json['evolutions'].cast<String>(),
         height: json['height'],
         weight: json['weight'],
-        weaknesses: json['weaknesses'],
-        abilities: json['abilities'],
+        weaknesses: json['weaknesses'].cast<String>(),
+        abilities: json['abilities'].cast<String>(),
         category: json['category'],
-        types: json['typeofpokemon'],
+        types: json['typeofpokemon'].cast<String>(),
         cycles: json['cycles'],
         eggGroups: json['egg_groups'],
         evolvedFrom: json['evolvedFrom'],
