@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokdex/domain/entities/pokemon_entity.dart';
 
 import '../../core/utility.dart';
+import '../screen/pokemon_detail_screen.dart';
 
 class PokemonListItem extends StatelessWidget {
   final PokemonEntity pokemon;
@@ -17,13 +18,13 @@ class PokemonListItem extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(20),
           onTap: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (ctx) => PokemonDetailScreen(
-            //       id: pokemon.id,
-            //     ),
-            //   ),
-            // );
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) => PokemonDetailScreen(
+                  id: pokemon.id.toString(),
+                ),
+              ),
+            );
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),

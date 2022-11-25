@@ -9,17 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // unawaited(di.init());
   await di.init();
-  // GetPokemonUsecase getPokemonUsecase = di.sl<GetPokemonUsecase>();
-  // final Either<AppError, List<PokemonEntity>> eitherResponse =
-  //     await getPokemonUsecase(NoParams());
 
-  // eitherResponse.fold((l) {
-  //   print("error occur");
-  //   print(l);
-  // }, (r) {
-  //   print("Pokemon Lists ");
-  //   print(r);
-  // });
   runApp(const PokemonApp());
 }
 

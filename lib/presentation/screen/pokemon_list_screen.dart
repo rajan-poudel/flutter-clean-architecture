@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/utility.dart';
 import '../Controller/pokemon.controller.dart';
 import '../widget/pokemon_list_item.dart';
 
@@ -41,7 +42,9 @@ class _PokemonListScreenState extends State<PokemonListScreen> {
           'PokeDex',
           style: TextStyle(fontSize: 28),
         ),
-        backgroundColor: Theme.of(context).highlightColor,
+        backgroundColor: PokemonUtils.getColorType("Grass"),
+
+        // backgroundColor: Theme.of(context).highlightColor,
         elevation: 0,
         centerTitle: false,
         actions: [

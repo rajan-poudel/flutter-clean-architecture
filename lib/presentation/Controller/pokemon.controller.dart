@@ -18,4 +18,8 @@ class PokemonProvider with ChangeNotifier {
       notifyListeners();
     });
   }
+
+  PokemonEntity getPokemonById(String id) {
+    return _pokemonList.firstWhere((pokemon) => pokemon.id == id);
+  }
 }
